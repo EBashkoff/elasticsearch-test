@@ -10,7 +10,7 @@
 <% end %>
 
 <div class="form-container">
-  <%= will_paginate %>
+<%= will_paginate %>
   <table class="table table-bordered table-striped">
     <tr>
       <th>Last Name</th>
@@ -22,17 +22,19 @@
       <th></th>
     </tr>
 
-    <% @people.each do |person| %>
-      <tr>
-        <td><%= person.l_name %></td>
-        <td><%= person.f_name %></td>
-        <td><%= person.email %></td>
-        <td><%= person.age %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <tbody>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.l_name %></td>
+          <td><%= person.f_name %></td>
+          <td><%= person.email %></td>
+          <td><%= person.age %></td>
+          <td><%= link_to 'Show', person %></td>
+          <td><%= link_to 'Edit', edit_person_path(person) %></td>
+          <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>
   <%= will_paginate %>
 </div>
