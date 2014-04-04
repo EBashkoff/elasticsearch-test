@@ -2,13 +2,13 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    if !params[:search].nil? && params[:search].length != 0 then
-      @people = Person.find(params[:search]) || raise("Not Found")
-      params[:page] = params[:search]
+    if params[:search].present? then
+      @people = Person.search(params) || raise("Not Found")
+      @people.each { |p| logger.debug("Found: #{p.id}, #{p.f_name}, #{p.l_name}, #{p.email}, #{p.age}, ") }
       params[:search] = ''
+    else
+      @people = Person.paginate(page: params[:page], per_page: 10)
     end
-
-    @people = Person.paginate(page: params[:page], per_page: 10)
 
     respond_to do |format|
       format.html # index.html.erb
