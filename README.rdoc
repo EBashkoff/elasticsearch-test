@@ -1,7 +1,6 @@
 # elasticsearch.test - Version 0
 
-This is a test bed for upgrading leadparser.com's use of tire/elasticsearch 
-  database search capabilities
+This is a test bed for upgrading leadparser.com's use of tire/elasticsearch database search capabilities
 
 Tire has has been deprecated, and now elasticsearch-rails must be used
 
