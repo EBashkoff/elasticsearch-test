@@ -17,4 +17,10 @@ To run the prototype on the master branch do the following from directory elasti
     3. bundle exec rake db:migrate (zeroes out then reseeds the database)
     4. Go to localost:3000/people in the browser
 
-         
+To run the prototype on the newlib branch do the following from directory elasticsearch-test:
+    1. rails server (to start the rails server)
+    2. elasticsearch -D es.config=/usr/local/Cellar/elasticsearch/1.1.0/config/elasticsearch.yml
+         (to start the elasticsearch service - must be running before seeding database)
+    3. bundle exec rake db:migrate (zeroes out then reseeds the database)
+    4. bundle exec rake environment elasticsearch:import:model CLASS='Person'
+    5. Go to localost:3000/people in the browser        

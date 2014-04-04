@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'elasticsearch/rails/instrumentation'
+require 'elasticsearch/rails/lograge'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -58,5 +60,8 @@ module ElasticsearchTest
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Enable elasticsearch lograge logger
+    config.lograge.enabled
   end
 end
