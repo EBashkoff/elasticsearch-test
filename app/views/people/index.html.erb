@@ -1,0 +1,43 @@
+<div>
+  <h1>Listing People in Database</h1>
+</div>
+
+<%= form_tag('/people', method: 'get') do %>
+  <div class="search-container">
+    <%= text_field_tag 'search', params[:search], class: "search-box-style" %>
+    <%= submit_tag 'Search', class: "button-style" %>
+  </div>
+<% end %>
+
+<div class="form-container">
+  <%= will_paginate %>
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Last Name</th>
+      <th>First name</th>
+      <th>E-Mail</th>
+      <th>Age</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+    <% @people.each do |person| %>
+      <tr>
+        <td><%= person.l_name %></td>
+        <td><%= person.f_name %></td>
+        <td><%= person.email %></td>
+        <td><%= person.age %></td>
+        <td><%= link_to 'Show', person %></td>
+        <td><%= link_to 'Edit', edit_person_path(person) %></td>
+        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= will_paginate %>
+</div>
+<br />
+
+<div class="footer">
+  <%= link_to 'New Person', new_person_path %>
+</div>

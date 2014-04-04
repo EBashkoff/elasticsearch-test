@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+<div class="form-container">
+	<p>
+	  <b>L name:</b>
+	  <%= @person.l_name %>
+	</p>
+
+	<p>
+	  <b>F name:</b>
+	  <%= @person.f_name %>
+	</p>
+
+	<p>
+	  <b>Email:</b>
+	  <%= @person.email %>
+	</p>
+
+	<p>
+	  <b>Age:</b>
+	  <%= @person.age %>
+	</p>
+</div>
+
+<div class="footer">
+	<%= link_to 'Edit', edit_person_path(@person) %> |
+	<%= link_to 'Back', people_path %>
+</div>
