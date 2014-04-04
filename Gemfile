@@ -28,7 +28,8 @@ group :development, :test do
 end
 	
 gem 'jquery-rails'
-gem 'tire'
+# gem 'tire'
+gem 'elasticsearch-model'
 
 
 # To use ActiveModel has_secure_password
