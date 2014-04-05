@@ -2,14 +2,17 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
+    logger.debug("HERE IN INDEX CONTROLLER")
     if params[:search].present? then
       @people = Person.search(params[:search]).records || raise("Not Found")
       @people.each { |p| logger.debug("Search Found: #{p.id}, #{p.f_name}, #{p.l_name}, #{p.email}, #{p.age}, ") }
       @people = @people.paginate(page: params[:page], per_page: 10)
       params[:search] = ''
+      @is_search_result = true
     else
       @people = Person.paginate(page: params[:page], per_page: 10)
       @people.each { |p| logger.debug("Index Found: #{p.id}, #{p.f_name}, #{p.l_name}, #{p.email}, #{p.age}, ") }
+      @is_search_result = false
     end
 
     respond_to do |format|

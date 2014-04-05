@@ -30,6 +30,7 @@ end
 gem 'jquery-rails'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'elasticsearch-ruby'
 gem 'lograge'
 
 
