@@ -6,24 +6,41 @@ class Person < ActiveRecord::Base
   # include Tire::Model::Callbacks
 
   include Elasticsearch::Model
-  # include Elasticsearch::Model::Callbacks
+  include Elasticsearch::Model::Callbacks
 
-  # field :f_name, type: String
-  # field :l_name, type: String
-  # field :email,  type: String
-  # field :age,    type: integer
+  after_touch :update_index
 
-  def self.search(params)
-    query = "match" : 
-      {
-        "f_name" :  params[:search],
-        "l_name" :  params[:search],
-        "email" :   params[:search],
-        "age" : params[:search]
-      }
-    
+  mapping do
+    indexes :f_name
+    indexes :l_name
+    indexes :email
+    indexes :age, type: 'integer' # , index: 'not analyzed'
+  end
 
-  end 
+  # def as_indexed_json(options={})
+  #   as_json(only: [:id, :upc, :title, :description, :manufacturer_id]).merge({
+  #     'tag'          => tags,
+  #     'manufacturer' => manufacturer.name,
+  #     'in-stock'     => product_status.in_stock,
+  #     'price'        => product_status.price_cents
+  #   })
+  # end
+
+  private
+
+  def update_index
+    __elasticsearch__.update_document
+  end
+
+  # def self.search(params)
+  #   queryexp = {}
+  #   queryexp[:query] =  {
+  #     { term:  { f_name:  params[:search] } },
+  #     { term:  { l_name:  params[:search] } },
+  #     { term:  { email:   params[:search] } },
+  #     { term:  { age:     params[:search] } }
+  #   }
+  # end 
 
   # def self.search(params)
   # 	tire.search(load: true) do

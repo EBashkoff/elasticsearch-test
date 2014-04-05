@@ -42,4 +42,7 @@
 
 <div class="footer">
   <%= link_to 'New Person', new_person_path %>
+  <% if @is_search_result then %>
+    | <%= link_to 'Back', index_path %>
+  <% end %>
 </div>

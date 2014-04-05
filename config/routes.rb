@@ -1,5 +1,7 @@
 ElasticsearchTest::Application.routes.draw do
   resources :people
+  match '/index', to: 'people#index', via: 'get'
+  match '/', to: 'people#index', via: 'get'
 
 
   # The priority is based upon order of creation:
