@@ -23,4 +23,13 @@ To run the prototype on the newlib branch do the following from directory elasti
          (to start the elasticsearch service - must be running before seeding database)
     3. bundle exec rake db:migrate (zeroes out then reseeds the database)
     4. bundle exec rake environment elasticsearch:import:model CLASS='Person'
-    5. Go to localost:3000/people in the browser        
+    5. Go to localost:3000/people in the browser
+
+Useful commands:
+    1. bundle exec rake elasticsearch:reindex (to reindex the Person table)
+    2. elasticsearch -D<es.logger.level=DEBUG> or <es.logger.level=TRACE> es.config=/usr/local/Cellar/elasticsearch/1.1.0/config/elasticsearch.yml
+         to see more detailed elasticsearch server activity
+    3. curl localhost:9200/_stats or localhost:9200/_stats/docs or localhost:9200/_stats/indexing for index info
+    4. curl localhost:9200/_aliases to list all indexes and aliases
+    5. curl -XDELETE "localhost:9200/<index name>" to delete an index
+
