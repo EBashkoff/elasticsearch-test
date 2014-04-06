@@ -1,4 +1,4 @@
-# elasticsearch.test - Version 0
+# elasticsearch.test - Version 1
 
 This is a test bed for upgrading leadparser.com's use of tire/elasticsearch database search capabilities
 
@@ -31,5 +31,5 @@ Useful commands:
          to see more detailed elasticsearch server activity
     3. curl localhost:9200/_stats or localhost:9200/_stats/docs or localhost:9200/_stats/indexing for index info
     4. curl localhost:9200/_aliases to list all indexes and aliases
-    5. curl -XDELETE "localhost:9200/<index name>" to delete an index
+    5. curl -XDELETE "localhost:9200/<index name>" to delete an index 
 
