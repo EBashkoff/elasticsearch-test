@@ -1,8 +1,8 @@
 class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
+
   def index
-    logger.debug("HERE IN INDEX CONTROLLER")
     if params[:search].present? then
       @people = Person.search(params[:search]).records || raise("Not Found")
       @people.each { |p| logger.debug("Search Found: #{p.id}, #{p.f_name}, #{p.l_name}, #{p.email}, #{p.age}, ") }
