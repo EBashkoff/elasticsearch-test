@@ -4,9 +4,7 @@ This is a test bed for upgrading leadparser.com's use of tire/elasticsearch data
 
 Tire has has been deprecated, and now elasticsearch-rails must be used
 
-The master branch is an implementation of a test database with 100 records in
-  Rails and a search has been implemented on the index page using the
-  deprecated Tire gem
+The master branch is an implementation of a test database with 100 records in Rails and a search has been implemented on the index page using the deprecated Tire gem
 
 The newlib branch is am implementation using the new elasticsearch-rails gem
 
