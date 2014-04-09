@@ -17,6 +17,9 @@ ActiveRecord::Schema.define(:version => 20140403181148) do
     t.string   "l_name"
     t.string   "f_name"
     t.string   "email"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
     t.integer  "age"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

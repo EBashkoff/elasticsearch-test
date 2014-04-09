@@ -4,6 +4,9 @@ class CreatePeople < ActiveRecord::Migration
       t.string :l_name
       t.string :f_name
       t.string :email
+      t.string :city
+      t.string :state
+      t.string :zip
       t.integer :age
 
       t.timestamps
