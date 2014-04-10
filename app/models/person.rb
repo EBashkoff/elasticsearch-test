@@ -8,12 +8,14 @@ class Person < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  # __elasticsearch__.client = Elasticsearch::Client.new( host: "localhost:9200" )
+
   after_commit do 
     logger.debug("*********  SELF AS INDEXED #{self.__elasticsearch__.as_indexed_json}")
     self.__elasticsearch__.index_document
   end
   
-  settings index: { :number_of_shards => 6, :number_of_replicas => 1 } do
+  settings index: { :number_of_shards => 1, :number_of_replicas => 1 } do
     mappings _source: { :enabled => false }, _all: { :enabled => true } do
       indexes :f_name
       indexes :l_name
